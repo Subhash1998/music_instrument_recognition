@@ -17,13 +17,12 @@ from sklearn.preprocessing import LabelEncoder
 from mfcc import find_mfcc
 
 classes = ['cello','clarinet','flute','guitar','saxophone','trumpet','violin']
-path = '/home/subhash/Desktop/musical instrument recognition/data/'
     
 files=[]
 labels=[]
 prev=0
 for classname in classes:
-    for root,dirnames,filenames in walk(path+classname):
+    for root,dirnames,filenames in walk(classname):
         for filename in fnmatch.filter(filenames,'*.wav'):
             files.append(filename)
             labels.append(classname)
@@ -31,9 +30,9 @@ for classname in classes:
 i = 0
 mfcc_data = []
 for file in files:
-    location = path+labels[i]+'/'+file
+    location = labels[i]+'/'+file
     mfcc_data.append(find_mfcc(location,labels[i]))
     i+=1
 
 df = pd.DataFrame(mfcc_data)
-csv_data = df.to_csv('/home/subhash/Desktop/musical instrument recognition/dataset.csv')
+csv_data = df.to_csv('dataset.csv')
