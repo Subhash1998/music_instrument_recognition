@@ -82,7 +82,6 @@ accuracy = accuracy/5.0
 precision = precision/5.0
 recall = recall/5.0
 f1 = f1/5.0
-print((accuracy),(","),(precision),(", "),(recall),(", "),(f1))
     
 
 
